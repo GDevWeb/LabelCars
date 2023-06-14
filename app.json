@@ -1,11 +1,18 @@
 {
   "expo": {
-    "name": "LableCars3000",
-    "slug": "LableCars3000",
+    "name": "LabelCars3000",
+    "slug": "LabelCars3000",
     "version": "1.0.0",
     "assetBundlePatterns": [
       "**/*"
-    ]
+    ],
+    "icon" : "./assets/icon.png",
+
+    "splash" : {
+      "image" : "./assets/splash.png",
+        "backgroundColor" : "#222"
+      
+    }
   },
-  "name": "LableCars3000"
+  "name": "LabelCars3000"
 }
