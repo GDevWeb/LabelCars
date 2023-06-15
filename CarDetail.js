@@ -8,19 +8,19 @@ const CoffeeItem = (props) => {
     <View>
       <Image style={styles.carImage} source={{ uri: item.image }} />
       <Text>
-        <Image source={require('./assets/icons/engine.png')} style={{ width: 20, height: 20 }} />
+        <Image source={require('./assets/icons/engine.png')} style={styles.icon} />
         {item.options.transmission ? "Transmission automatique" : "Transmission manuelle"}
         </Text>
       <Text>
-        <Image source={require('./assets/icons/doors.png')} style={{ width: 20, height: 20 }} />
+        <Image source={require('./assets/icons/doors.png')} style={styles.icon} />
         {item.options.person} personnes
       </Text>
       <Text>
-        <Image source={require('./assets/icons/compass.png')} style={{ width: 20, height: 20 }} />
+        <Image source={require('./assets/icons/compass.png')} style={styles.icon} />
         {item.options.transmission ? "GPS intégré" : "GPS non inclus"}
       </Text>
       <Text>
-        <Image source={require('./assets/icons/snow.png')} style={{ width: 20, height: 20 }} />
+        <Image source={require('./assets/icons/snow.png')} style={styles.icon} />
         {item.options.transmission ? "véhicule climatisé" : "véhicule non climatisé"}
       </Text>
         <Text>
@@ -41,6 +41,11 @@ const styles = StyleSheet.create({
   carImage: {
     width: vw,
     height: vh / 4
+  },
+
+  icon : {
+    width: 20,
+    height : 20,
   },
   footerPrice : {
     fontSize:18,
