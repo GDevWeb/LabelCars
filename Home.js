@@ -1,6 +1,7 @@
 import React from 'react';
 import { ImageBackground, Dimensions, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import cars from './cars';
 
 export default Home = () => {
   const navigation = useNavigation();
@@ -15,7 +16,7 @@ export default Home = () => {
       onPress={handlePress}
     >
       <ImageBackground style={styles.header} source={require("./assets/hero.jpg")}>
-        <Text style={styles.title}>3 véhicules à découvrir</Text>
+        <Text style={styles.title}>{cars.length} véhicules à découvrir</Text>
       </ImageBackground>
     </TouchableOpacity>
   );
