@@ -1,12 +1,15 @@
+// Filter.js
 import React, { useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
 
-const Filter = () => {
-  const [minPrice, setMinPrice] = useState(0);
-  const [maxPrice, setMaxPrice] = useState(0);
+const Filter = ({ onFilter }) => {
+  const [minPrice, setMinPrice] = useState('0');
+  const [maxPrice, setMaxPrice] = useState('0');
 
   const handleFilter = () => {
-    console.log(`Filtrer par prix entre ${minPrice} et ${maxPrice}`);
+    const min = parseInt(minPrice);
+    const max = parseInt(maxPrice);
+    onFilter(min, max);
   };
 
   return (
@@ -15,14 +18,14 @@ const Filter = () => {
       <TextInput
         style={styles.input}
         value={minPrice}
-        onChangeText={number => setMinPrice(number)}
+        onChangeText={(number) => setMinPrice(number)}
         keyboardType="numeric"
       />
       <Text>Prix maximum :</Text>
       <TextInput
         style={styles.input}
         value={maxPrice}
-        onChangeText={number => setMaxPrice(number)}
+        onChangeText={(number) => setMaxPrice(number)}
         keyboardType="numeric"
       />
       <Button title="Filtrer" onPress={handleFilter} />

@@ -1,18 +1,15 @@
-import React from "react";
-import {
-  Dimensions,
-  FlatList,
-  Image,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
+// CarList.js
+import React, { useState } from "react";
+import { Dimensions, FlatList, Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import cars from "./cars";
 import Filter from "./Filter";
 
 export default function CarList(props) {
-  const renderCarList = (item) => {
+  const [filteredCars, setFilteredCars] = useState(cars);
+  const [minPrice, setMinPrice] = useState(0);
+  const [maxPrice, setMaxPrice] = useState(0);
+
+  const renderCarList = ({ item }) => {
     return (
       <TouchableOpacity
         style={styles.carItem}
@@ -25,25 +22,23 @@ export default function CarList(props) {
     );
   };
 
-  return (
-    <View style={styles.container}>
-      <Filter/>
-      <FlatList
-        keyExtractor={(item) => item.id}
-        data={cars}
-        renderItem={({ item }) => renderCarList(item)}
-        numColumns={0}
-      />
-    </View>
-  );
+  const handleFilter = (min, max) => {
+    setMinPrice(min);
+    setMaxPrice(max);
+    const filtered = cars.filter((car) => {
+      return (min === 0 || car.price >= min) && (max === 0 || car.price <= max);
+    });
+    setFilteredCars(filtered);
+  };
 
   return (
     <View style={styles.container}>
+      <Filter onFilter={handleFilter} />
       <FlatList
         keyExtractor={(item) => item.id}
-        data={cars}
-        renderItem={({ item }) => renderCarList(item)}
-        numColumns={0}
+        data={filteredCars}
+        renderItem={renderCarList}
+        numColumns={1}
       />
     </View>
   );
