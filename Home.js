@@ -31,7 +31,7 @@ const Home = (props) => {
         <View style={styles.cardItem}>
         <Image style={styles.carImage} source={{ uri: item.image }} />
         <Text style={styles.name}>{item.name}</Text>
-        <Text>{item.price}€ par jour</Text>
+        <Text style = {styles.price}>{item.price}€ par jour</Text>
         </View>
       </TouchableOpacity>
     );
@@ -86,8 +86,12 @@ const styles = StyleSheet.create({
   },
   name: {
     color: "#000",
-    fontSize: 20,
-    fontWeight: "bold",
+    fontWeight : 'bold',
+    fontSize: 16,
+  },
+
+  price:{
+    fontWeight : 'bold',
   },
   carItem: {
     display: "flex",
@@ -97,20 +101,19 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   cardItem:{
+    flexBasis:"45%",
     display: "flex",
     justifyContent: "center",
     alignItems : "center",
     width: 190,
     height : 170,
-    borderRadius : 100,
-    flexBasis:"45%",
     backgroundColor: "#E9E9E9",
     borderRadius:10,
 
   },
   carImage: {
     width: vw / 2,
-    height: vh / 7,
+    height: vh / 8,
   },
 });
 

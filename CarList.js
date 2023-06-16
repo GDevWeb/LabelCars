@@ -23,8 +23,10 @@ export default function CarList(props) {
         onPress={() => props.navigation.navigate("CarDetail", { item })}
       >
         <Image style={styles.carImage} source={{ uri: item.image }} />
+        <View style={styles.carText}>
         <Text style={styles.name}>{item.name}</Text>
-        <Text>{item.price}€ par jour</Text>
+        <Text style={styles.price}>{item.price}€ par jour</Text>
+        </View>
       </TouchableOpacity>
     );
   };
@@ -64,18 +66,34 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   carItem: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
     flex: 1,
+    flexDirection : 'row',
+    justifyContent: "space-evenly",
+    alignItems: "center",
     padding: 10,
+    backgroundColor : '#F2F2F2',
+    borderRadius : 20,
+    marginBottom : 10,
   },
   carImage: {
+    flex: 2,
     width: vw,
-    height: vh / 4,
+    height: vh / 6,
   },
+  carText : {
+    flex : 2,
+    justifyContent:'center',
+    alignItems: 'center',
+    textAlign : 'center',
+  },
+  item : {
+    fontSize : '12',
+  },
+
   noMatchesText: {
     fontStyle: 'italic',
+    fontWeight : 'bold',
     textAlign: 'center',
+    color: 'crimson',
   },
 });
