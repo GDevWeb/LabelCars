@@ -42,7 +42,7 @@ export default function CarList(props) {
           numColumns={1}
         />
       ) : (
-        <Text style={styles.noMatchesText}>Aucune correspondance trouvée.</Text>
+        <Text style={styles.noMatchesText}>Aucun véhicule correspondant.</Text>
       )}
     </View>
   );
