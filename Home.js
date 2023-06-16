@@ -28,9 +28,11 @@ const Home = (props) => {
         style={styles.carItem}
         onPress={() => props.navigation.navigate("CarDetail", { item })}
       >
+        <View style={styles.cardItem}>
         <Image style={styles.carImage} source={{ uri: item.image }} />
         <Text style={styles.name}>{item.name}</Text>
         <Text>{item.price}€ par jour</Text>
+        </View>
       </TouchableOpacity>
     );
   };
@@ -44,7 +46,7 @@ const Home = (props) => {
         <Text style={styles.title}>{cars.length} véhicules à découvrir</Text>
       </ImageBackground>
       <View style={styles.container}>
-        <Text style={styles.subtitle}>Les plus réservés :</Text>
+        <Text style={styles.subtitle}>Les plus réservés</Text>
         <FlatList
           keyExtractor={(item) => item.id}
           data={data}
@@ -78,8 +80,9 @@ const styles = StyleSheet.create({
   },
   subtitle : {
     fontSize: 20,
-    fontWeight: 'bold',
+    fontWeight: '600',
     textAlign: 'center',
+    color:"#536D85"
   },
   name: {
     color: "#000",
@@ -92,6 +95,18 @@ const styles = StyleSheet.create({
     alignItems: "center",
     flex: 1,
     padding: 10,
+  },
+  cardItem:{
+    display: "flex",
+    justifyContent: "center",
+    alignItems : "center",
+    width: 190,
+    height : 170,
+    borderRadius : 100,
+    flexBasis:"45%",
+    backgroundColor: "#E9E9E9",
+    borderRadius:10,
+
   },
   carImage: {
     width: vw / 2,

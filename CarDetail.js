@@ -5,6 +5,7 @@ const CoffeeItem = (props) => {
   const [item, setItem] = useState(props.route.params.item);
 
   return (
+    
     <View>
       <Image style={styles.carImage} source={{ uri: item.image }} />
       <Text>

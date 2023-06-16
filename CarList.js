@@ -1,13 +1,20 @@
-// CarList.js
 import React, { useState } from "react";
 import { Dimensions, FlatList, Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import cars from "./cars";
 import Filter from "./Filter";
 
 export default function CarList(props) {
-  const [filteredCars, setFilteredCars] = useState(cars);
   const [minPrice, setMinPrice] = useState(0);
   const [maxPrice, setMaxPrice] = useState(0);
+
+  const handleFilter = (min, max) => {
+    setMinPrice(min);
+    setMaxPrice(max);
+  };
+
+  const filteredCars = cars.filter((car) => {
+    return (minPrice === 0 || car.price >= minPrice) && (maxPrice === 0 || car.price <= maxPrice);
+  });
 
   const renderCarList = ({ item }) => {
     return (
@@ -22,24 +29,19 @@ export default function CarList(props) {
     );
   };
 
-  const handleFilter = (min, max) => {
-    setMinPrice(min);
-    setMaxPrice(max);
-    const filtered = cars.filter((car) => {
-      return (min === 0 || car.price >= min) && (max === 0 || car.price <= max);
-    });
-    setFilteredCars(filtered);
-  };
-
   return (
     <View style={styles.container}>
       <Filter onFilter={handleFilter} />
-      <FlatList
-        keyExtractor={(item) => item.id}
-        data={filteredCars}
-        renderItem={renderCarList}
-        numColumns={1}
-      />
+      {filteredCars.length > 0 ? (
+        <FlatList
+          keyExtractor={(item) => item.id}
+          data={filteredCars}
+          renderItem={renderCarList}
+          numColumns={1}
+        />
+      ) : (
+        <Text style={styles.noMatchesText}>Aucune correspondance trouvée.</Text>
+      )}
     </View>
   );
 }
@@ -71,5 +73,9 @@ const styles = StyleSheet.create({
   carImage: {
     width: vw,
     height: vh / 4,
+  },
+  noMatchesText: {
+    fontStyle: 'italic',
+    textAlign: 'center',
   },
 });
