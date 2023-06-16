@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
     padding: 10,
     backgroundColor : '#F2F2F2',
     borderRadius : 20,
-    marginBottom : 10,
+    margin : 5,
   },
   carImage: {
     flex: 2,

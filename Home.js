@@ -43,7 +43,7 @@ const Home = (props) => {
         style={styles.header}
         source={require("./assets/hero.jpg")}
       >
-        <Text style={styles.title}>{cars.length} véhicules à découvrir</Text>
+        <Text style={styles.info}>{cars.length} véhicules à découvrir</Text>
       </ImageBackground>
       <View style={styles.container}>
         <Text style={styles.subtitle}>Les plus réservés</Text>
@@ -69,9 +69,9 @@ const styles = StyleSheet.create({
   header: {
     width: vw,
     height: vh / 3,
-    backgroundColor: "blue",
+    backgroundColor: "#F9F9F9",
   },
-  title: {
+  info: {
     position: "absolute",
     bottom: 5,
     left: 5,
@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   cardItem:{
-    flexBasis:"45%",
+    flex: 1,
     display: "flex",
     justifyContent: "center",
     alignItems : "center",
